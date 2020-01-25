@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SettingsActivity">
+
+    <TextView
+            android:id="@+id/textAlgorithm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/label_algorithm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/textLength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/text_length"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxUppercase" />
+
+    <Spinner
+            android:id="@+id/spinnerAlgorithm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textAlgorithm"
+            app:layout_constraintTop_toBottomOf="@+id/textAlgorithm" />
+
+    <CheckBox
+            android:id="@+id/checkBoxLowercase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/check_lowercase"
+            app:layout_constraintStart_toStartOf="@+id/spinnerAlgorithm"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerAlgorithm" />
+
+    <CheckBox
+            android:id="@+id/checkBoxDigits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/check_digits"
+            app:layout_constraintStart_toEndOf="@+id/checkBoxLowercase"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerAlgorithm" />
+
+    <CheckBox
+            android:id="@+id/checkBoxUppercase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/check_uppercase"
+            app:layout_constraintEnd_toEndOf="@+id/checkBoxLowercase"
+            app:layout_constraintStart_toStartOf="@+id/checkBoxLowercase"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxLowercase" />
+
+    <CheckBox
+            android:id="@+id/checkBoxSpecialSymbols"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/check_spec_symbols"
+            app:layout_constraintStart_toEndOf="@+id/checkBoxLowercase"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxDigits" />
+
+    <SeekBar
+            android:id="@+id/seekLength"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editLength"
+            app:layout_constraintTop_toBottomOf="@+id/textLength" />
+
+    <EditText
+            android:id="@+id/editLength"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="2"
+            app:layout_constraintStart_toStartOf="@+id/textLength"
+            app:layout_constraintTop_toBottomOf="@+id/textLength" />
+
+</android.support.constraint.ConstraintLayout>
