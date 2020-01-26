@@ -45,10 +45,10 @@ class PasswordGenerator() {
     private val symbolClasses = arrayListOf<SymbolClass>()
     init {
         when (Preferences.algorithm) {
-            "SHA3" -> digest = SHA3.Digest256()
-            "SHA256" -> digest = SHA256.Digest()
-            "SHA512" -> digest = SHA512.Digest()
-            "SHA1" -> digest = SHA1.Digest()
+            "SHA3-256" -> digest = SHA3.Digest256()
+            "SHA-256" -> digest = SHA256.Digest()
+            "SHA-512" -> digest = SHA512.Digest()
+            "SHA-1" -> digest = SHA1.Digest()
             "MD5" -> digest = MD5.Digest()
         }
         if (Preferences.addLowercase) {

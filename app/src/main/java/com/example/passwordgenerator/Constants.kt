@@ -6,6 +6,7 @@ class Constants {
     companion object {
         const val mainPasswordKey = "MainPassword"
         const val saveMainPasswordKey = "SaveMainPassword"
+        const val hideMainPasswordKey = "HideMainPassword"
         const val hideSiteKey = "HideSite"
         const val hideLoginKey = "HideLogin"
         const val hideResultKey = "HideResult"

@@ -3,11 +3,14 @@ package com.example.passwordgenerator
 import android.R.attr.label
 import android.content.*
 import android.os.Bundle
+import android.support.design.widget.CheckableImageButton
+import android.support.design.widget.TextInputLayout
 import android.text.Editable
 import android.text.InputType.*
 import android.text.TextWatcher
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_main.*
+import java.lang.Exception
 
 
 class MainActivity : BaseActivity() {
@@ -37,11 +40,34 @@ class MainActivity : BaseActivity() {
         editLogin.addTextChangedListener(watcher)
     }
 
+    private fun initPasswordToggle(layout: TextInputLayout, key: String, getPref: () -> Boolean, setPref: (Boolean) -> Unit) {
+        setPref(sharedPref().getBoolean(key, getPref()))
+        if (!getPref()) {
+            layout.passwordVisibilityToggleRequested(true)
+        }
+
+        try {
+            val field = layout::class.java.getDeclaredField("passwordToggleView");
+            field.isAccessible = true;
+            val toggle = field.get(layout) as CheckableImageButton
+            toggle.setOnClickListener {_ ->
+                val checked = !getPref();
+                setPref(checked);
+                putBoolean(key, checked);
+                layout.passwordVisibilityToggleRequested(false)
+            }
+        }
+        catch (e: NoSuchFieldException) {
+            e.printStackTrace()
+        }
+
+    }
+
     private fun initChecks() {
-        initCheck(checkBoxSavePassword, Constants.saveMainPasswordKey, {Preferences.saveMainPassword}, {v -> Preferences.saveMainPassword = v}, {v -> updateSavedMainPassword(null)})
-        initCheck(checkBoxHideSite,     Constants.hideSiteKey,         {Preferences.hideSite},         {v -> Preferences.hideSite         = v; updateHiding(editSite,     v)})
-        initCheck(checkBoxHideLogin,    Constants.hideLoginKey,        {Preferences.hideLogin},        {v -> Preferences.hideLogin        = v; updateHiding(editLogin,    v)})
-        initCheck(checkBoxHideResult,   Constants.hideResultKey,       {Preferences.hideResult},       {v -> Preferences.hideResult       = v; updateHiding(editResult,   v)})
+        initPasswordToggle(editMainPasswordLayout, Constants.hideMainPasswordKey, {Preferences.hideMainPassword}, {v -> Preferences.hideMainPassword = v})
+        initPasswordToggle(editSiteLayout,         Constants.hideSiteKey,         {Preferences.hideSite},         {v -> Preferences.hideSite         = v})
+        initPasswordToggle(editLoginLayout,        Constants.hideLoginKey,        {Preferences.hideLogin},        {v -> Preferences.hideLogin        = v})
+        initPasswordToggle(editResultLayout,       Constants.hideResultKey,       {Preferences.hideResult},       {v -> Preferences.hideResult       = v})
     }
 
     private fun loadMainPassword() {
@@ -57,7 +83,7 @@ class MainActivity : BaseActivity() {
 
     private fun dataChanged() {
         updateResult()
-        updateSavedMainPassword(null)
+        updateSavedMainPassword()
 
     }
 
@@ -72,13 +98,13 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun updateSavedMainPassword(externalEditor : SharedPreferences.Editor?) {
-        val editor = externalEditor ?: sharedPref().edit()
+    private fun updateSavedMainPassword() {
+        /*
+        val editor = sharedPref().edit()
         val password = if (checkBoxSavePassword.isChecked) editMainPassword.text.toString() else ""
         editor.putString(Constants.mainPasswordKey, password)
-        if (externalEditor == null) {
-            editor.apply()
-        }
+        editor.apply()
+        */
     }
 
     override fun onResume() {
