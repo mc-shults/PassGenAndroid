@@ -18,6 +18,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+            android:id="@+id/textSymbols"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/text_symbols"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxSaveMainPassword" />
+
+    <TextView
             android:id="@+id/textLength"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,6 +41,7 @@
 
     <Spinner
             android:id="@+id/spinnerAlgorithm"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -46,7 +58,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/check_lowercase"
             app:layout_constraintStart_toStartOf="@+id/spinnerAlgorithm"
-            app:layout_constraintTop_toBottomOf="@id/checkBoxSaveMainPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/textSymbols" />
 
     <CheckBox
             android:id="@+id/checkBoxSaveMainPassword"

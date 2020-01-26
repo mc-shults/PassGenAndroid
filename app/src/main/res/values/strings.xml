@@ -22,4 +22,5 @@
     <string name="check_spec_symbols">Special Symbols</string>
     <string name="text_length">Password Length</string>
     <string name="hint_optional">optional</string>
+    <string name="text_symbols">Symbols</string>
 </resources>
