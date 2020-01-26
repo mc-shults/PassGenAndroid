@@ -8,42 +8,6 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <EditText
-            android:id="@+id/editMainPassword"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:ems="10"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toStartOf="@+id/checkBoxSavePassword"
-            app:layout_constraintStart_toStartOf="@+id/textMainPassword"
-            app:layout_constraintTop_toBottomOf="@+id/textMainPassword" />
-
-    <EditText
-            android:id="@+id/editSite"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="@+id/editMainPassword"
-            app:layout_constraintStart_toStartOf="@+id/editMainPassword"
-            app:layout_constraintTop_toBottomOf="@+id/textSite" />
-
-    <EditText
-            android:id="@+id/editLogin"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/hint_optional"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="@+id/editSite"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/editMainPassword"
-            app:layout_constraintTop_toBottomOf="@+id/textLogin" />
-
     <TextView
             android:id="@+id/textMainPassword"
             android:layout_width="wrap_content"
@@ -55,23 +19,89 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonSettings" />
 
+    <android.support.design.widget.TextInputLayout
+            android:id="@+id/editMainPasswordLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="16dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textMainPassword"
+            app:layout_constraintTop_toBottomOf="@+id/textMainPassword"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@android:color/darker_gray">
+
+        <EditText
+                android:id="@+id/editMainPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black" />
+
+
+    </android.support.design.widget.TextInputLayout>
+
     <TextView
             android:id="@+id/textSite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/label_site"
-            app:layout_constraintStart_toStartOf="@+id/editMainPassword"
-            app:layout_constraintTop_toBottomOf="@+id/editMainPassword" />
+            app:layout_constraintStart_toStartOf="@+id/editMainPasswordLayout"
+            app:layout_constraintTop_toBottomOf="@+id/editMainPasswordLayout" />
+
+    <android.support.design.widget.TextInputLayout
+            android:id="@+id/editSiteLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="16dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textSite"
+            app:layout_constraintTop_toBottomOf="@+id/textSite"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@android:color/darker_gray">
+
+        <EditText
+                android:id="@+id/editSite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black" />
+
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
             android:id="@+id/textLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="@string/label_login"
-            app:layout_constraintStart_toStartOf="@+id/editSite"
-            app:layout_constraintTop_toBottomOf="@+id/editSite" />
+            app:layout_constraintStart_toStartOf="@+id/editSiteLayout"
+            app:layout_constraintTop_toBottomOf="@+id/editSiteLayout" />
+
+    <android.support.design.widget.TextInputLayout
+            android:id="@+id/editLoginLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="16dp"
+            android:textColorHint="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textLogin"
+            app:layout_constraintTop_toBottomOf="@+id/textLogin"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@android:color/darker_gray">
+
+        <EditText
+                android:id="@+id/editLogin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black" />
+
+    </android.support.design.widget.TextInputLayout>
 
     <TextView
             android:id="@+id/textResult"
@@ -79,61 +109,30 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/label_result"
-            app:layout_constraintStart_toStartOf="@+id/editLogin"
-            app:layout_constraintTop_toBottomOf="@+id/editLogin" />
+            app:layout_constraintStart_toStartOf="@+id/editLoginLayout"
+            app:layout_constraintTop_toBottomOf="@+id/editLoginLayout" />
 
-    <EditText
-            android:id="@+id/editResult"
+    <android.support.design.widget.TextInputLayout
+            android:id="@+id/editResultLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:editable="false"
-            android:ems="10"
-            android:inputType="text"
-            android:singleLine="false"
-            app:layout_constraintEnd_toEndOf="@+id/editLogin"
-            app:layout_constraintStart_toStartOf="@+id/editLogin"
-            app:layout_constraintTop_toBottomOf="@+id/textResult" />
+            app:layout_constraintEnd_toEndOf="@+id/editLoginLayout"
+            app:layout_constraintStart_toStartOf="@+id/editLoginLayout"
+            app:layout_constraintTop_toBottomOf="@+id/textResult"
+            android:textColorHint="@android:color/black"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@android:color/darker_gray">
 
-    <CheckBox
-            android:id="@+id/checkBoxSavePassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/check_save_password"
-            app:layout_constraintBottom_toBottomOf="@+id/editMainPassword"
-            app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+                android:id="@+id/editResult"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black" />
 
-    <CheckBox
-            android:id="@+id/checkBoxHideSite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/check_hide_site"
-            app:layout_constraintBottom_toBottomOf="@+id/editSite"
-            app:layout_constraintEnd_toEndOf="parent" />
 
-    <CheckBox
-            android:id="@+id/checkBoxHideLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/check_hide_login"
-            app:layout_constraintBottom_toBottomOf="@+id/editLogin"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    <CheckBox
-            android:id="@+id/checkBoxHideResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/check_hide_result"
-            app:layout_constraintBottom_toBottomOf="@+id/editResult"
-            app:layout_constraintEnd_toEndOf="parent" />
+    </android.support.design.widget.TextInputLayout>
 
     <ImageButton
             android:id="@+id/buttonSettings"
@@ -157,7 +156,7 @@
             android:text="@string/button_copy_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/editResult"
-            app:layout_constraintTop_toBottomOf="@+id/editResult" />
+            app:layout_constraintStart_toStartOf="@+id/editResultLayout"
+            app:layout_constraintTop_toBottomOf="@+id/editResultLayout" />
 
 </android.support.constraint.ConstraintLayout>

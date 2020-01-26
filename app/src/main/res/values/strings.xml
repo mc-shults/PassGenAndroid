@@ -12,10 +12,10 @@
     <string name="check_hide_login">Hide</string>
     <string name="label_algorithm">Algorithm</string>
     <string-array name="algorithm_array">
-        <item>SHA3</item>
-        <item>SHA256</item>
-        <item>SHA512</item>
-        <item>SHA1</item>
+        <item>SHA3-256</item>
+        <item>SHA-256</item>
+        <item>SHA-512</item>
+        <item>SHA-1</item>
         <item>MD5</item>
     </string-array>
     <string name="check_lowercase">Lowercase</string>
