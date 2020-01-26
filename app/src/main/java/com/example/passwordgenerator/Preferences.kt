@@ -2,6 +2,7 @@ package com.example.passwordgenerator
 
 object Preferences {
     var saveMainPassword = false
+    var mainPassword = ""
     var hideMainPassword = true
     var hideSite = false
     var hideLogin = false

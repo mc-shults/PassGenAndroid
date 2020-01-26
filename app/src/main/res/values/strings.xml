@@ -7,9 +7,7 @@
     <string name="button_copy_password">Copy</string>
     <string name="label_result">Result</string>
     <string name="label_login">Login</string>
-    <string name="check_save_password">Save</string>
-    <string name="check_hide_site">Hide</string>
-    <string name="check_hide_login">Hide</string>
+    <string name="check_save_password">Save Main Password</string>
     <string name="label_algorithm">Algorithm</string>
     <string-array name="algorithm_array">
         <item>SHA3-256</item>
@@ -23,6 +21,5 @@
     <string name="check_digits">Digits</string>
     <string name="check_spec_symbols">Special Symbols</string>
     <string name="text_length">Password Length</string>
-    <string name="check_hide_result">Hide</string>
     <string name="hint_optional">optional</string>
 </resources>

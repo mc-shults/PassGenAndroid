@@ -46,6 +46,15 @@
             android:layout_marginTop="16dp"
             android:text="@string/check_lowercase"
             app:layout_constraintStart_toStartOf="@+id/spinnerAlgorithm"
+            app:layout_constraintTop_toBottomOf="@id/checkBoxSaveMainPassword" />
+
+    <CheckBox
+            android:id="@+id/checkBoxSaveMainPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/check_save_password"
+            app:layout_constraintStart_toStartOf="@+id/spinnerAlgorithm"
             app:layout_constraintTop_toBottomOf="@+id/spinnerAlgorithm" />
 
     <CheckBox
@@ -54,10 +63,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
             android:text="@string/check_digits"
             app:layout_constraintStart_toEndOf="@+id/checkBoxLowercase"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerAlgorithm" />
+            app:layout_constraintTop_toTopOf="@+id/checkBoxLowercase" />
 
     <CheckBox
             android:id="@+id/checkBoxUppercase"

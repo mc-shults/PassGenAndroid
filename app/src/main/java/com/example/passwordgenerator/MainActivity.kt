@@ -99,12 +99,11 @@ class MainActivity : BaseActivity() {
     }
 
     private fun updateSavedMainPassword() {
-        /*
+        Preferences.mainPassword = editMainPassword.text.toString()
         val editor = sharedPref().edit()
-        val password = if (checkBoxSavePassword.isChecked) editMainPassword.text.toString() else ""
+        val password = if (Preferences.saveMainPassword) editMainPassword.text.toString() else ""
         editor.putString(Constants.mainPasswordKey, password)
         editor.apply()
-        */
     }
 
     override fun onResume() {
