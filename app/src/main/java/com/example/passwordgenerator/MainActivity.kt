@@ -1,7 +1,9 @@
 package com.example.passwordgenerator
 
-import android.R.attr.label
-import android.content.*
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.CheckableImageButton
 import android.support.design.widget.TextInputLayout
@@ -9,8 +11,8 @@ import android.text.Editable
 import android.text.InputType.*
 import android.text.TextWatcher
 import android.widget.EditText
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.Exception
 
 
 class MainActivity : BaseActivity() {
@@ -30,6 +32,11 @@ class MainActivity : BaseActivity() {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("password", editResult.text)
             clipboard.primaryClip = clip
+            val toast = Toast.makeText(
+                applicationContext,
+                resources.getText(R.string.toast_result_copied), Toast.LENGTH_SHORT
+            )
+            toast.show()
         }
         val watcher = object : TextWatcher{
             override fun afterTextChanged(s: Editable?) {}
