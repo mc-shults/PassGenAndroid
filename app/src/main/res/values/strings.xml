@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Password generator</string>
+    <string name="app_name">Constant PassGen</string>
     <string name="title_generator">Generator</string>
     <string name="title_settings">Settings</string>
     <string name="label_main_password">Main password</string>
