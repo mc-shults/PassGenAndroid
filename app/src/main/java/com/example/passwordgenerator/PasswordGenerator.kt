@@ -88,6 +88,9 @@ class PasswordGenerator() {
 
     fun generate(source : String) : String? {
         try {
+            if (symbolClasses.count() == 0) {
+                return "";
+            }
             val hash = digest.digest(source.toByteArray())
             return createPasswordFromHash(hash)
         } catch (e: NoSuchAlgorithmException) {
