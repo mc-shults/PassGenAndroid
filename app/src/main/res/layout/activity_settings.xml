@@ -73,11 +73,9 @@
             android:id="@+id/checkBoxDigits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/check_digits"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/checkBoxLowercase"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxLowercase" />
 
     <CheckBox
@@ -87,18 +85,16 @@
             android:layout_marginTop="16dp"
             android:text="@string/check_uppercase"
             app:layout_constraintEnd_toEndOf="@+id/checkBoxLowercase"
-            app:layout_constraintStart_toStartOf="@+id/checkBoxLowercase"
+            app:layout_constraintStart_toStartOf="@+id/checkBoxDigits"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxDigits" />
 
     <CheckBox
             android:id="@+id/checkBoxSpecialSymbols"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/check_spec_symbols"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/checkBoxUppercase"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxUppercase" />
 
     <SeekBar

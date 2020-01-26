@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Constant PassGen</string>
+    <string name="button_copy_password">Скопировать</string>
+    <string name="check_digits">Цифры</string>
+    <string name="check_lowercase">Строчные</string>
+    <string name="check_uppercase">Прописные</string>
+    <string name="check_save_password">Сохранить главный пароль</string>
+    <string name="check_spec_symbols">Специальные символы</string>
+    <string name="hint_optional">не обязательно</string>
+    <string name="label_algorithm">Алгоритм</string>
+    <string name="label_login">Логин</string>
+    <string name="label_main_password">Главный пароль</string>
+    <string name="label_result">Результат</string>
+    <string name="label_site">Сайт/название приложения</string>
+    <string name="text_length">Длина пароля</string>
+    <string name="text_symbols">Символы</string>
+    <string name="toast_result_copied">Результат скопирован</string>
+</resources>
