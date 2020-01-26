@@ -21,6 +21,7 @@ class MainActivity : BaseActivity() {
 
         initChecks()
         loadMainPassword()
+        loadSymbolClasses()
         buttonSettings.setOnClickListener { _ ->
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
@@ -73,6 +74,13 @@ class MainActivity : BaseActivity() {
     private fun loadMainPassword() {
         val password = sharedPref().getString(Constants.mainPasswordKey, "")
         editMainPassword.setText(password)
+    }
+
+    private fun loadSymbolClasses() {
+        Preferences.addLowercase      = sharedPref().getBoolean(Constants.addLowercaseKey,      Preferences.addLowercase)
+        Preferences.addUppercase      = sharedPref().getBoolean(Constants.addUppercaseKey,      Preferences.addUppercase)
+        Preferences.addDigits         = sharedPref().getBoolean(Constants.addDigitsKey,         Preferences.addDigits)
+        Preferences.addSpecialSymbols = sharedPref().getBoolean(Constants.addSpecialSymbolsKey, Preferences.addSpecialSymbols)
     }
 
     private fun updateHiding(edit: EditText, hide: Boolean) {
