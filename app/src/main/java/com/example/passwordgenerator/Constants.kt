@@ -16,7 +16,6 @@ class Constants {
         const val addDigitsKey = "AddDigits"
         const val addSpecialSymbolsKey = "AddSpecialSymbols"
         const val passwordLengthKey = "PasswordLength"
-        const val minPasswordLength = 1
         const val maxPasswordLength = 32
         const val easiestPasswordLength = 3
         const val easyPasswordLength = 7

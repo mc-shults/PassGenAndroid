@@ -9,6 +9,7 @@ class PasswordGenerator() {
     private abstract class SymbolClass {
         public abstract val size: Int
         public abstract fun getSymbol(index: Int): Char
+        public var used = false
     }
     private class lowercase : SymbolClass(){
         public override val size = 'z'.toInt() - 'a'.toInt() + 1
@@ -70,6 +71,7 @@ class PasswordGenerator() {
         while (true) {
             for (symbolClass in symbolClasses) {
                 if (currentIndex < symbolClass.size) {
+                    symbolClass.used = true
                     return symbolClass.getSymbol(currentIndex)
                 } else {
                     currentIndex -= symbolClass.size
@@ -78,18 +80,35 @@ class PasswordGenerator() {
         }
     }
 
-    private fun createPasswordFromHash(hash : ByteArray) : String {
+    private fun createPasswordFromHash(hash : ByteArray) : String? {
         val result = StringBuilder(8)
         for (i in 0 until Preferences.passwordLength) {
             result.append(getChar(hash[i]))
         }
-        return result.toString()
+        var allUsed = true
+        for (symbolClass in symbolClasses) {
+            allUsed = allUsed and symbolClass.used
+        }
+        if (allUsed) {
+            return result.toString()
+        } else {
+            return null
+        }
     }
 
     fun generate(source : String) : String? {
         try {
+            if (symbolClasses.count() == 0) {
+                return "";
+            }
             val hash = digest.digest(source.toByteArray())
-            return createPasswordFromHash(hash)
+            val result = createPasswordFromHash(hash)
+            if (result != null) {
+                return result
+            } else {
+                symbolClasses.forEach{c -> c.used = false}
+                return generate(source + hash.fold("", { str, it -> str + "%02x".format(it) }))
+            }
         } catch (e: NoSuchAlgorithmException) {
             e.printStackTrace()
         } catch (e: UnsupportedEncodingException) {
