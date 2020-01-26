@@ -66,27 +66,54 @@ class SettingsActivity : BaseActivity()  {
         }
     }
 
+    private fun getSymbolClassCount() : Int {
+        var symbolClassCount = 0
+        if (Preferences.addLowercase) {
+            symbolClassCount++
+        }
+        if (Preferences.addUppercase) {
+            symbolClassCount++
+        }
+        if (Preferences.addDigits) {
+            symbolClassCount++
+        }
+        if (Preferences.addSpecialSymbols) {
+            symbolClassCount++
+        }
+        return symbolClassCount
+    }
+
+    private fun symbolClassCountChanged() {
+        val symbolClassCount = getSymbolClassCount()
+        var passwordLength = Preferences.passwordLength
+        seekLength.max = Constants.maxPasswordLength - symbolClassCount
+        if (passwordLength < symbolClassCount) {
+            passwordLength = symbolClassCount
+        }
+        passwordLengthChanged(null, passwordLength)
+    }
+
     private fun initSymbolChecks() {
         val saveMainPassword = {v: Boolean -> sharedPref().edit().putString(Constants.mainPasswordKey, if (v) Preferences.mainPassword else "").apply()}
         initCheck(checkBoxSaveMainPassword, Constants.saveMainPasswordKey,  {Preferences.saveMainPassword},  {v -> Preferences.saveMainPassword  = v}, saveMainPassword)
-        initCheck(checkBoxLowercase,        Constants.addLowercaseKey,      {Preferences.addLowercase},      {v -> Preferences.addLowercase      = v})
-        initCheck(checkBoxUppercase,        Constants.addUppercaseKey,      {Preferences.addUppercase},      {v -> Preferences.addUppercase      = v})
-        initCheck(checkBoxDigits,           Constants.addDigitsKey,         {Preferences.addDigits},         {v -> Preferences.addDigits         = v})
-        initCheck(checkBoxSpecialSymbols,   Constants.addSpecialSymbolsKey, {Preferences.addSpecialSymbols}, {v -> Preferences.addSpecialSymbols = v})
+        initCheck(checkBoxLowercase,        Constants.addLowercaseKey,      {Preferences.addLowercase},      {v -> Preferences.addLowercase      = v; symbolClassCountChanged()})
+        initCheck(checkBoxUppercase,        Constants.addUppercaseKey,      {Preferences.addUppercase},      {v -> Preferences.addUppercase      = v; symbolClassCountChanged()})
+        initCheck(checkBoxDigits,           Constants.addDigitsKey,         {Preferences.addDigits},         {v -> Preferences.addDigits         = v; symbolClassCountChanged()})
+        initCheck(checkBoxSpecialSymbols,   Constants.addSpecialSymbolsKey, {Preferences.addSpecialSymbols}, {v -> Preferences.addSpecialSymbols = v; symbolClassCountChanged()})
     }
 
     private fun initPasswordLengthControls() {
         Preferences.passwordLength = sharedPref().getInt(Constants.passwordLengthKey, Preferences.passwordLength)
         editLength.setText(Preferences.passwordLength.toString())
-        seekLength.max = Constants.maxPasswordLength
-        seekLength.progress = Preferences.passwordLength
+        seekLength.max = Constants.maxPasswordLength - getSymbolClassCount()
+        seekLength.progress = Preferences.passwordLength - getSymbolClassCount()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             updateSeekColor(Preferences.passwordLength)
         }
         seekLength.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onStopTrackingTouch(seekBar: SeekBar) {}
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
-            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) { passwordLengthChanged(seekLength, progress)}
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) { passwordLengthChanged(seekLength, progress + getSymbolClassCount())}
         })
 
         editLength.addTextChangedListener(object : TextWatcher {
@@ -101,13 +128,13 @@ class SettingsActivity : BaseActivity()  {
     }
 
     private fun passwordLengthChanged(sender: Any?, value: Int) {
-        if (!passwordLengthEditing && value >= Constants.minPasswordLength && value <= Constants.maxPasswordLength) {
+        if (!passwordLengthEditing && value <= Constants.maxPasswordLength) {
             passwordLengthEditing = true
             if (sender != editLength) {
                 editLength.setText(value.toString())
             }
             if (sender != seekLength) {
-                seekLength.progress = value
+                seekLength.progress = value - getSymbolClassCount()
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 updateSeekColor(value)
