@@ -19,4 +19,7 @@
     <string name="button_back">Назад</string>
     <string name="button_next">Далее</string>
     <string name="button_skip">Пропустить</string>
+    <string name="text_guide0">Введите главный пароль</string>
+    <string name="text_guide1">Введите название приложения или сайта</string>
+    <string name="text_guide2">Результат сгенерируется автоматически</string>
 </resources>

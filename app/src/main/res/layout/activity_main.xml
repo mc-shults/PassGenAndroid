@@ -158,6 +158,19 @@
     </android.support.design.widget.TextInputLayout>
 
     <ImageButton
+            android:id="@+id/buttonGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_help_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewAppName"
+            app:layout_constraintEnd_toStartOf="@+id/buttonSettings"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
             android:id="@+id/buttonSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

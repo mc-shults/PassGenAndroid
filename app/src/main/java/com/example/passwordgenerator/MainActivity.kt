@@ -24,6 +24,10 @@ class MainActivity : BaseActivity() {
         initChecks()
         loadMainPassword()
         loadSymbolClasses()
+        buttonGuide.setOnClickListener { _ ->
+            val intent = Intent(this, GuideActivity::class.java)
+            startActivity(intent)
+        }
         buttonSettings.setOnClickListener { _ ->
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
