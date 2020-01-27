@@ -22,4 +22,5 @@
     <string name="text_guide0">Введите главный пароль</string>
     <string name="text_guide1">Введите название приложения или сайта</string>
     <string name="text_guide2">Результат сгенерируется автоматически</string>
+    <string name="button_lets_go">Поехали!</string>
 </resources>
