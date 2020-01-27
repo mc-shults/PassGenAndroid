@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".SettingsActivity">
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
     <TextView
             android:id="@+id/textAlgorithm"
@@ -46,6 +49,19 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <TextView
+            android:id="@+id/textExtensions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/century_gothic"
+            android:text="@string/text_extensions"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
     <Spinner
             android:id="@+id/spinnerAlgorithm"
@@ -229,4 +245,38 @@
             app:layout_constraintStart_toStartOf="@+id/switchSpecialSymbols"
             app:layout_constraintTop_toBottomOf="@+id/switchSpecialSymbols" />
 
-</android.support.constraint.ConstraintLayout>
+    <View
+            android:id="@+id/divider3"
+            android:layout_width="0dp"
+            android:layout_height="0.3dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/switchSpecialSymbols"
+            app:layout_constraintTop_toBottomOf="@+id/editLength" />
+
+    <Button
+            android:id="@+id/buttonChrome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/chrome_badge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonFirefox" />
+
+    <Button
+            android:id="@+id/buttonFirefox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/firefox_badge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textExtensions" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

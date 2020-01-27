@@ -29,4 +29,5 @@
     <string name="text_guide1">Enter site or app name</string>
     <string name="text_guide2">Result will be generated automatically</string>
     <string name="button_lets_go">Let\'s go!</string>
+    <string name="text_extensions">Browser Extensions</string>
 </resources>

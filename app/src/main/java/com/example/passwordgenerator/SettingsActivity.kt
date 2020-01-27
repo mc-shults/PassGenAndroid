@@ -1,16 +1,17 @@
 package com.example.passwordgenerator
 
-import android.app.Activity
-import android.content.Context
-import android.content.SharedPreferences
+import android.content.Intent
 import android.graphics.PorterDuff
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import kotlinx.android.synthetic.main.activity_settings.*
 
@@ -25,6 +26,7 @@ class SettingsActivity : BaseActivity()  {
         initSpinnerAlgorithm()
         initSymbolChecks()
         initPasswordLengthControls()
+        initExtensionListeners()
     }
 
     private fun initSpinnerAlgorithm() {
@@ -153,5 +155,17 @@ class SettingsActivity : BaseActivity()  {
             else Constants.hardPasswordColor
         seekLength.progressDrawable.setColorFilter(color, PorterDuff.Mode.MULTIPLY)
         seekLength.thumb.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+    }
+
+    private fun getExtensionListener(extensionUrl: String) : (View) -> Unit {
+        return { v: View ->
+            val browse = Intent(Intent.ACTION_VIEW, Uri.parse(extensionUrl))
+            startActivity(browse)
+        }
+    }
+
+    private fun initExtensionListeners() {
+        buttonFirefox.setOnClickListener(getExtensionListener("https://addons.mozilla.org/ru/firefox/addon/constant-passgen/"))
+        buttonChrome.setOnClickListener(getExtensionListener("https://chrome.google.com/webstore/detail/constant-passgen/nafjpdjfpmgcciefgoiklbdiglcfgegh"))
     }
 }
