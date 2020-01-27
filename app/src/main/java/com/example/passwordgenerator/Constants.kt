@@ -21,8 +21,8 @@ class Constants {
         const val easyPasswordLength = 7
         const val mediumPasswordLength = 11
         const val easiestPasswordColor = Color.RED
-        val easyPasswordColor = Color.parseColor("#FFA500")
-        val mediumPasswordColor = Color.parseColor("#32CD32")
-        val hardPasswordColor = Color.parseColor("#008000")
+        val easyPasswordColor = Color.parseColor("#ef6c00")
+        val mediumPasswordColor = Color.parseColor("#6ec5ff")
+        val hardPasswordColor = Color.parseColor("#2195F2")
     }
 }
