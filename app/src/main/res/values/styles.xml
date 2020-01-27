@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SpinnerTheme">
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:fontFamily">@font/century_gothic</item>
+    </style>
+
 </resources>
