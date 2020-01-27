@@ -22,4 +22,7 @@
     <string name="hint_optional">optional</string>
     <string name="text_symbols">Symbols</string>
     <string name="toast_result_copied">Result copied</string>
+    <string name="button_next">Next</string>
+    <string name="button_back">Back</string>
+    <string name="button_skip">Skip</string>
 </resources>

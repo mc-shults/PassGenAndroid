@@ -16,4 +16,7 @@
     <string name="text_length">Длина пароля</string>
     <string name="text_symbols">Символы</string>
     <string name="toast_result_copied">Результат скопирован</string>
+    <string name="button_back">Назад</string>
+    <string name="button_next">Далее</string>
+    <string name="button_skip">Пропустить</string>
 </resources>
