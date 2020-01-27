@@ -8,8 +8,9 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".SettingsActivity"></activity>
+            android:theme="@style/AppTheme">
+        <activity android:name=".GuideActivity"></activity>
+        <activity android:name=".SettingsActivity" />
         <activity
                 android:name=".MainActivity"
                 android:label="@string/app_name">

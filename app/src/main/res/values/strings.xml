@@ -22,4 +22,11 @@
     <string name="hint_optional">optional</string>
     <string name="text_symbols">Symbols</string>
     <string name="toast_result_copied">Result copied</string>
+    <string name="button_next">Next</string>
+    <string name="button_back">Back</string>
+    <string name="button_skip">Skip</string>
+    <string name="text_guide0">Enter main password</string>
+    <string name="text_guide1">Enter site or app name</string>
+    <string name="text_guide2">Result will be generated automatically</string>
+    <string name="button_lets_go">Let\'s go!</string>
 </resources>
