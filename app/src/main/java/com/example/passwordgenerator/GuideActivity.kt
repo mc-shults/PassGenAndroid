@@ -3,6 +3,7 @@ package com.example.passwordgenerator
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import kotlinx.android.synthetic.main.activity_guide.*
 
 
@@ -17,6 +18,7 @@ class GuideActivity : AppCompatActivity() {
         buttonNext.setOnClickListener { _ -> if (step < 2) setStep(step + 1) else finish() }
         buttonBack.setOnClickListener { _ -> setStep(step - 1) }
         buttonSkip.setOnClickListener { _ -> finish() }
+        this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     fun setStep(newStep: Int) {

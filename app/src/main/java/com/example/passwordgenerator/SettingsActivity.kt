@@ -9,6 +9,7 @@ import android.support.annotation.RequiresApi
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
@@ -27,6 +28,7 @@ class SettingsActivity : BaseActivity()  {
         initSymbolChecks()
         initPasswordLengthControls()
         initExtensionListeners()
+        this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
     private fun initSpinnerAlgorithm() {
