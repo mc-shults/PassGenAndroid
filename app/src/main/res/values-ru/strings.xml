@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Constant PassGen</string>
+    <string name="app_name">Password Generator</string>
     <string name="button_copy_password">Скопировать</string>
     <string name="check_digits">Цифры</string>
     <string name="check_lowercase">Строчные</string>
@@ -26,4 +26,5 @@
     <string name="text_extensions">Браузерные расширения</string>
     <string name="text_guide0">Добро пожаловать в Константный генератор паролей. Для того, чтобы пропустить обучение, нажмите верхнюю правую кнопку.</string>
     <string name="image_app_icon_description">Иконка приложения</string>
+    <string name="full_app_name">Constant PassGen</string>
 </resources>

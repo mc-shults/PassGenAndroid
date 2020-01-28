@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Constant PassGen</string>
+    <string name="app_name">Password Generator</string>
     <string name="label_main_password">Main password</string>
     <string name="label_site">Site/Application Name</string>
     <string name="button_copy_password">Copy</string>
@@ -32,4 +32,5 @@
     <string name="text_extensions">Browser Extensions</string>
     <string name="text_guide0">Weclome to Constant Password Generator! To skip this guide click top right button.</string>
     <string name="image_app_icon_description">Application Icon</string>
+    <string name="full_app_name">Constant PassGen</string>
 </resources>

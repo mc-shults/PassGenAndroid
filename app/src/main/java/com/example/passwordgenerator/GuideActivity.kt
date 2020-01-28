@@ -24,7 +24,7 @@ class GuideActivity : BaseActivity() {
 
     private fun setStep(newStep: Int) {
         step = newStep
-        buttonBack.isEnabled = step != 0
+        buttonBack.isEnabled = if (needBack) step != 1 else step != 0
         imageIcon.visibility = if (step > 0) View.INVISIBLE else View.VISIBLE
         editMainPasswordLayout.visibility = if (step < 1) View.INVISIBLE else View.VISIBLE
         textMainPassword.visibility = editMainPasswordLayout.visibility
