@@ -19,15 +19,13 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        checkFirstStart()
         setContentView(R.layout.activity_main)
 
         initChecks()
         loadMainPassword()
         loadSymbolClasses()
-        buttonGuide.setOnClickListener { _ ->
-            val intent = Intent(this, GuideActivity::class.java)
-            startActivity(intent)
-        }
+        buttonGuide.setOnClickListener { _ -> startGuide(true) }
         buttonSettings.setOnClickListener { _ ->
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
@@ -50,6 +48,19 @@ class MainActivity : BaseActivity() {
         editMainPassword.addTextChangedListener(watcher)
         editSite.addTextChangedListener(watcher)
         editLogin.addTextChangedListener(watcher)
+    }
+
+    private fun checkFirstStart() {
+        val firstStart = sharedPref().getBoolean("firstStart", true)
+        if (firstStart) {
+            startGuide(false)
+        }
+    }
+
+    private fun startGuide(needBack: Boolean) {
+        val intent = Intent(this, GuideActivity::class.java)
+        intent.putExtra("needBack", needBack)
+        startActivity(intent)
     }
 
     private fun initPasswordToggle(layout: TextInputLayout, key: String, getPref: () -> Boolean, setPref: (Boolean) -> Unit) {
