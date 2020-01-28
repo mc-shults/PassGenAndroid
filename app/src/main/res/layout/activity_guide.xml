@@ -17,15 +17,28 @@
 
     <TextView
             android:id="@+id/textDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:fontFamily="@font/century_gothic"
+            android:textSize="20sp"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonSkip" />
+
+    <ImageView
+            android:id="@+id/imageIcon"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/image_app_icon_description"
+            android:src="@drawable/ic_icon_without_shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textDescription" />
 
     <TextView
             android:id="@+id/textMainPassword"

@@ -19,9 +19,11 @@
     <string name="button_back">Назад</string>
     <string name="button_next">Далее</string>
     <string name="button_skip">Пропустить</string>
-    <string name="text_guide0">Введите главный пароль</string>
-    <string name="text_guide1">Введите название приложения или сайта</string>
-    <string name="text_guide2">Результат сгенерируется автоматически</string>
+    <string name="text_guide1">Шаг 1. Введите главный пароль.</string>
+    <string name="text_guide2">Шаг 2. Введите название приложения или сайта.</string>
+    <string name="text_guide3">Шаг 3. Результат сгенерируется автоматически.</string>
     <string name="button_lets_go">Поехали!</string>
     <string name="text_extensions">Браузерные расширения</string>
+    <string name="text_guide0">Добро пожаловать в Константный генератор паролей. Для того, чтобы пропустить обучение, нажмите верхнюю правую кнопку.</string>
+    <string name="image_app_icon_description">Иконка приложения</string>
 </resources>

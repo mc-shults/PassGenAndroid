@@ -25,9 +25,11 @@
     <string name="button_next">Next</string>
     <string name="button_back">Back</string>
     <string name="button_skip">Skip</string>
-    <string name="text_guide0">Enter main password</string>
-    <string name="text_guide1">Enter site or app name</string>
-    <string name="text_guide2">Result will be generated automatically</string>
+    <string name="text_guide1">Step 1. Enter main password.</string>
+    <string name="text_guide2">Step 2. Enter site or app name.</string>
+    <string name="text_guide3">Result will be generated automatically.</string>
     <string name="button_lets_go">Let\'s go!</string>
     <string name="text_extensions">Browser Extensions</string>
+    <string name="text_guide0">Weclome to Constant Password Generator! To skip this guide click top right button.</string>
+    <string name="image_app_icon_description">Application Icon</string>
 </resources>
