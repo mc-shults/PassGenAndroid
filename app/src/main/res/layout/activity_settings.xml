@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".SettingsActivity">
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -76,35 +76,15 @@
             app:layout_constraintStart_toStartOf="@+id/textAlgorithm"
             app:layout_constraintTop_toBottomOf="@+id/textAlgorithm" />
 
-    <View
-            android:id="@+id/divider1"
-            android:layout_width="0dp"
-            android:layout_height="0.3dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textAlgorithm"
-            app:layout_constraintTop_toBottomOf="@+id/switchSaveMainPassword" />
-
-    <CheckBox
-            android:id="@+id/checkBoxLowercase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/check_lowercase"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="@+id/spinnerAlgorithm"
-            app:layout_constraintTop_toBottomOf="@+id/textSymbols" />
-
-    <CheckBox
-            android:id="@+id/checkBoxSaveMainPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/check_save_password"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="@+id/spinnerAlgorithm"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerAlgorithm" />
+        <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="0.3dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/switchSaveMainPassword" />
 
     <Switch
             android:id="@+id/switchSaveMainPassword"
@@ -120,37 +100,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinnerAlgorithm" />
-
-    <CheckBox
-            android:id="@+id/checkBoxDigits"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/check_digits"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="@+id/checkBoxLowercase"
-            app:layout_constraintTop_toBottomOf="@+id/checkBoxLowercase" />
-
-    <CheckBox
-            android:id="@+id/checkBoxUppercase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/check_uppercase"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/checkBoxLowercase"
-            app:layout_constraintStart_toStartOf="@+id/checkBoxDigits"
-            app:layout_constraintTop_toBottomOf="@+id/checkBoxDigits" />
-
-    <CheckBox
-            android:id="@+id/checkBoxSpecialSymbols"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/check_spec_symbols"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="@+id/checkBoxUppercase"
-            app:layout_constraintTop_toBottomOf="@+id/checkBoxUppercase" />
 
     <SeekBar
             android:id="@+id/seekLength"
@@ -176,7 +125,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textLength" />
 
     <Switch
-            android:id="@+id/switchLowerCase"
+            android:id="@+id/switchLowercase"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -189,6 +138,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textSymbols" />
+
+        <Switch
+                android:id="@+id/switchUppercase"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/century_gothic"
+                android:text="@string/check_uppercase"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/switchLowercase" />
 
     <Switch
             android:id="@+id/switchDigits"
@@ -203,22 +167,7 @@
             android:textColor="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switchLowerCase" />
-
-    <Switch
-            android:id="@+id/switchUpperCase"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/century_gothic"
-            android:text="@string/check_uppercase"
-            android:textColor="@android:color/darker_gray"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switchDigits" />
+            app:layout_constraintTop_toBottomOf="@+id/switchUppercase" />
 
     <Switch
             android:id="@+id/switchSpecialSymbols"
@@ -229,31 +178,31 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/century_gothic"
-            android:text="@string/check_lowercase"
+            android:text="@string/check_spec_symbols"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switchUpperCase" />
+            app:layout_constraintTop_toBottomOf="@+id/switchDigits" />
 
-    <View
-            android:id="@+id/divider2"
-            android:layout_width="0dp"
-            android:layout_height="0.3dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/switchSpecialSymbols"
-            app:layout_constraintTop_toBottomOf="@+id/switchSpecialSymbols" />
+        <View
+                android:id="@+id/divider2"
+                android:layout_width="0dp"
+                android:layout_height="0.3dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/switchSpecialSymbols" />
 
-    <View
-            android:id="@+id/divider3"
-            android:layout_width="0dp"
-            android:layout_height="0.3dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/switchSpecialSymbols"
-            app:layout_constraintTop_toBottomOf="@+id/editLength" />
+        <View
+                android:id="@+id/divider3"
+                android:layout_width="0dp"
+                android:layout_height="0.3dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editLength" />
 
     <Button
             android:id="@+id/buttonChrome"

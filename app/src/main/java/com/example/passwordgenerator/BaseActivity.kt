@@ -3,7 +3,7 @@ package com.example.passwordgenerator
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
-import android.widget.CheckBox
+import android.widget.Switch
 
 abstract class BaseActivity : Activity() {
     protected fun sharedPref() : SharedPreferences {
@@ -18,9 +18,9 @@ abstract class BaseActivity : Activity() {
         sharedPref().edit().putBoolean(key, value).apply()
     }
 
-    protected fun initCheck(check: CheckBox, key: String, getPref: () -> Boolean, setPref: (Boolean) -> Unit, onChange: ((Boolean) -> Unit)? = null) {
+    protected fun initSwitch(switch: Switch, key: String, getPref: () -> Boolean, setPref: (Boolean) -> Unit, onChange: ((Boolean) -> Unit)? = null) {
         setPref(sharedPref().getBoolean(key, getPref()))
-        check.isChecked = getPref()
-        check.setOnCheckedChangeListener {_, checked -> setPref(checked); putBoolean(key, checked); onChange?.invoke(checked) }
+        switch.isChecked = getPref()
+        switch.setOnCheckedChangeListener { _, checked -> setPref(checked); putBoolean(key, checked); onChange?.invoke(checked) }
     }
 }

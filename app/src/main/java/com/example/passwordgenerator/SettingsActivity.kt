@@ -97,11 +97,11 @@ class SettingsActivity : BaseActivity()  {
 
     private fun initSymbolChecks() {
         val saveMainPassword = {v: Boolean -> sharedPref().edit().putString(Constants.mainPasswordKey, if (v) Preferences.mainPassword else "").apply()}
-        initCheck(checkBoxSaveMainPassword, Constants.saveMainPasswordKey,  {Preferences.saveMainPassword},  {v -> Preferences.saveMainPassword  = v}, saveMainPassword)
-        initCheck(checkBoxLowercase,        Constants.addLowercaseKey,      {Preferences.addLowercase},      {v -> Preferences.addLowercase      = v; symbolClassCountChanged()})
-        initCheck(checkBoxUppercase,        Constants.addUppercaseKey,      {Preferences.addUppercase},      {v -> Preferences.addUppercase      = v; symbolClassCountChanged()})
-        initCheck(checkBoxDigits,           Constants.addDigitsKey,         {Preferences.addDigits},         {v -> Preferences.addDigits         = v; symbolClassCountChanged()})
-        initCheck(checkBoxSpecialSymbols,   Constants.addSpecialSymbolsKey, {Preferences.addSpecialSymbols}, {v -> Preferences.addSpecialSymbols = v; symbolClassCountChanged()})
+        initSwitch(switchSaveMainPassword, Constants.saveMainPasswordKey,  {Preferences.saveMainPassword},  { v -> Preferences.saveMainPassword  = v}, saveMainPassword)
+        initSwitch(switchLowercase,        Constants.addLowercaseKey,      {Preferences.addLowercase},      { v -> Preferences.addLowercase      = v; symbolClassCountChanged()})
+        initSwitch(switchUppercase,        Constants.addUppercaseKey,      {Preferences.addUppercase},      { v -> Preferences.addUppercase      = v; symbolClassCountChanged()})
+        initSwitch(switchDigits,           Constants.addDigitsKey,         {Preferences.addDigits},         { v -> Preferences.addDigits         = v; symbolClassCountChanged()})
+        initSwitch(switchSpecialSymbols,   Constants.addSpecialSymbolsKey, {Preferences.addSpecialSymbols}, { v -> Preferences.addSpecialSymbols = v; symbolClassCountChanged()})
     }
 
     private fun initPasswordLengthControls() {
