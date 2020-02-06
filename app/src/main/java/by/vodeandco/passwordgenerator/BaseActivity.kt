@@ -1,4 +1,4 @@
-package com.example.passwordgenerator
+package by.vodeandco.passwordgenerator
 
 import android.app.Activity
 import android.content.Context

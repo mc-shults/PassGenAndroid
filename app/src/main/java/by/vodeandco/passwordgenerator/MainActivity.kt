@@ -1,4 +1,4 @@
-package com.example.passwordgenerator
+package by.vodeandco.passwordgenerator
 
 import android.content.ClipData
 import android.content.ClipboardManager

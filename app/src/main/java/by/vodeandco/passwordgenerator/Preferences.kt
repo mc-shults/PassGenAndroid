@@ -1,4 +1,4 @@
-package com.example.passwordgenerator
+package by.vodeandco.passwordgenerator
 
 object Preferences {
     var saveMainPassword = false

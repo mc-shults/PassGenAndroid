@@ -1,4 +1,4 @@
-package com.example.passwordgenerator
+package by.vodeandco.passwordgenerator
 
 import org.bouncycastle.jcajce.provider.digest.*
 import java.io.UnsupportedEncodingException
