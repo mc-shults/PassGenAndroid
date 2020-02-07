@@ -5,12 +5,10 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.CheckableImageButton
-import android.support.design.widget.TextInputLayout
+import com.google.android.material.internal.CheckableImageButton
+import com.google.android.material.textfield.TextInputLayout
 import android.text.Editable
-import android.text.InputType.*
 import android.text.TextWatcher
-import android.widget.EditText
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -25,15 +23,15 @@ class MainActivity : BaseActivity() {
         initChecks()
         loadMainPassword()
         loadSymbolClasses()
-        buttonGuide.setOnClickListener { _ -> startGuide(true) }
-        buttonSettings.setOnClickListener { _ ->
+        buttonGuide.setOnClickListener { startGuide(true) }
+        buttonSettings.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
-        buttonCopyPassword.setOnClickListener { _ ->
+        buttonCopyPassword.setOnClickListener {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("password", editResult.text)
-            clipboard.primaryClip = clip
+            clipboard.setPrimaryClip(clip)
             val toast = Toast.makeText(
                 applicationContext,
                 resources.getText(R.string.toast_result_copied), Toast.LENGTH_SHORT
@@ -70,13 +68,13 @@ class MainActivity : BaseActivity() {
         }
 
         try {
-            val field = layout::class.java.getDeclaredField("passwordToggleView");
-            field.isAccessible = true;
+            val field = layout::class.java.getDeclaredField("passwordToggleView")
+            field.isAccessible = true
             val toggle = field.get(layout) as CheckableImageButton
-            toggle.setOnClickListener {_ ->
-                val checked = !getPref();
-                setPref(checked);
-                putBoolean(key, checked);
+            toggle.setOnClickListener {
+                val checked = !getPref()
+                setPref(checked)
+                putBoolean(key, checked)
                 layout.passwordVisibilityToggleRequested(false)
             }
         }
@@ -105,12 +103,6 @@ class MainActivity : BaseActivity() {
         Preferences.addSpecialSymbols = sharedPref().getBoolean(Constants.addSpecialSymbolsKey, Preferences.addSpecialSymbols)
     }
 
-    private fun updateHiding(edit: EditText, hide: Boolean) {
-        val passwordInputType = TYPE_CLASS_TEXT or TYPE_TEXT_VARIATION_PASSWORD
-        val textInputType = TYPE_CLASS_TEXT or TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-        edit.inputType = if (hide) passwordInputType else textInputType
-    }
-
     private fun dataChanged() {
         updateResult()
         updateSavedMainPassword()
@@ -118,7 +110,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun updateResult() {
-        if (!editMainPassword.text.isEmpty()) {
+        if (editMainPassword.text.isNotEmpty()) {
             Preferences.passwordLength = sharedPref().getInt(Constants.passwordLengthKey, Preferences.passwordLength)
             val raw = editMainPassword.text.toString() + editSite.text.toString() + editLogin.text.toString()
             val generator = PasswordGenerator()

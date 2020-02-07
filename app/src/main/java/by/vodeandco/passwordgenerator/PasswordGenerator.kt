@@ -5,37 +5,37 @@ import java.io.UnsupportedEncodingException
 import java.lang.StringBuilder
 import java.security.NoSuchAlgorithmException
 
-class PasswordGenerator() {
+class PasswordGenerator {
     private abstract class SymbolClass {
-        public abstract val size: Int
-        public abstract fun getSymbol(index: Int): Char
-        public var used = false
+        abstract val size: Int
+        abstract fun getSymbol(index: Int): Char
+        var used = false
     }
-    private class lowercase : SymbolClass(){
-        public override val size = 'z'.toInt() - 'a'.toInt() + 1
-        public override fun getSymbol(index: Int): Char {
+    private class LowercaseSymbols : SymbolClass(){
+        override val size = 'z'.toInt() - 'a'.toInt() + 1
+        override fun getSymbol(index: Int): Char {
             return ('a'.toInt() + index).toChar()
         }
     }
-    private class uppercase: SymbolClass(){
-        public override val size = 'Z'.toInt() - 'A'.toInt() + 1
-        public override fun getSymbol(index: Int): Char {
+    private class UppercaseSymbols: SymbolClass(){
+        override val size = 'Z'.toInt() - 'A'.toInt() + 1
+        override fun getSymbol(index: Int): Char {
             return ('A'.toInt() + index).toChar()
         }
     }
-    private class digit: SymbolClass(){
-        public override val size = '9'.toInt() - '0'.toInt() + 1
-        public override fun getSymbol(index: Int): Char {
+    private class DigitSymbols: SymbolClass(){
+        override val size = '9'.toInt() - '0'.toInt() + 1
+        override fun getSymbol(index: Int): Char {
             return ('0'.toInt() + index).toChar()
         }
     }
 
-    private class specialSymbol: SymbolClass(){
+    private class SpecialSymbols: SymbolClass(){
         private val symbols = arrayOf('!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',',
             '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '`', '{', '|',
             '}', '~')
-        public override val size = symbols.size
-        public override fun getSymbol(index: Int): Char {
+        override val size = symbols.size
+        override fun getSymbol(index: Int): Char {
             return symbols[index]
         }
     }
@@ -53,16 +53,16 @@ class PasswordGenerator() {
             "MD5" -> digest = MD5.Digest()
         }
         if (Preferences.addLowercase) {
-            symbolClasses.add(lowercase())
+            symbolClasses.add(LowercaseSymbols())
         }
         if (Preferences.addUppercase) {
-            symbolClasses.add(uppercase())
+            symbolClasses.add(UppercaseSymbols())
         }
         if (Preferences.addDigits) {
-            symbolClasses.add(digit())
+            symbolClasses.add(DigitSymbols())
         }
         if (Preferences.addSpecialSymbols) {
-            symbolClasses.add(specialSymbol())
+            symbolClasses.add(SpecialSymbols())
         }
     }
 
@@ -89,17 +89,13 @@ class PasswordGenerator() {
         for (symbolClass in symbolClasses) {
             allUsed = allUsed and symbolClass.used
         }
-        if (allUsed) {
-            return result.toString()
-        } else {
-            return null
-        }
+        return if (allUsed) result.toString() else null
     }
 
     fun generate(source : String) : String? {
         try {
             if (symbolClasses.count() == 0) {
-                return "";
+                return ""
             }
             val hash = digest.digest(source.toByteArray())
             val result = createPasswordFromHash(hash)

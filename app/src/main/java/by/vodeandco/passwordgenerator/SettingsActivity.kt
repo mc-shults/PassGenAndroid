@@ -1,11 +1,12 @@
 package by.vodeandco.passwordgenerator
 
 import android.content.Intent
-import android.graphics.PorterDuff
+import android.graphics.BlendMode
+import android.graphics.BlendModeColorFilter
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
+import androidx.annotation.RequiresApi
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -28,7 +29,7 @@ class SettingsActivity : BaseActivity()  {
         initSymbolChecks()
         initPasswordLengthControls()
         initExtensionListeners()
-        this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        this.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }
 
     private fun initSpinnerAlgorithm() {
@@ -49,7 +50,7 @@ class SettingsActivity : BaseActivity()  {
     }
 
     private fun setAlgorithmSelection() {
-        for (position in 0 until spinnerAlgorithm.getCount()) {
+        for (position in 0 until spinnerAlgorithm.count) {
             if (spinnerAlgorithm.getItemAtPosition(position) == sharedPref().getString(Constants.algorithmKey, "SHA3")) {
                 spinnerAlgorithm.setSelection(position)
                 break
@@ -124,8 +125,8 @@ class SettingsActivity : BaseActivity()  {
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (!editLength.text.isEmpty()) {
-                    passwordLengthChanged(editLength, editLength.text.toString().toInt());
+                if (editLength.text.isNotEmpty()) {
+                    passwordLengthChanged(editLength, editLength.text.toString().toInt())
                 }
             }
         })
@@ -151,16 +152,18 @@ class SettingsActivity : BaseActivity()  {
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     private fun updateSeekColor(passwordLength: Int) {
-            val color = if (passwordLength <= Constants.easiestPasswordLength) Constants.easiestPasswordColor
-            else if (passwordLength <= Constants.easyPasswordLength) Constants.easyPasswordColor
-            else if (passwordLength <= Constants.mediumPasswordLength) Constants.mediumPasswordColor
-            else Constants.hardPasswordColor
-        seekLength.progressDrawable.setColorFilter(color, PorterDuff.Mode.MULTIPLY)
-        seekLength.thumb.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+            val color = when {
+                passwordLength <= Constants.easiestPasswordLength -> Constants.easiestPasswordColor
+                passwordLength <= Constants.easyPasswordLength -> Constants.easyPasswordColor
+                passwordLength <= Constants.mediumPasswordLength -> Constants.mediumPasswordColor
+                else -> Constants.hardPasswordColor
+            }
+        seekLength.progressDrawable.colorFilter = BlendModeColorFilter(color, BlendMode.SRC_ATOP)
+        seekLength.thumb.colorFilter = BlendModeColorFilter(color, BlendMode.SRC_ATOP)
     }
 
     private fun getExtensionListener(extensionUrl: String) : (View) -> Unit {
-        return { v: View ->
+        return { _: View ->
             val browse = Intent(Intent.ACTION_VIEW, Uri.parse(extensionUrl))
             startActivity(browse)
         }

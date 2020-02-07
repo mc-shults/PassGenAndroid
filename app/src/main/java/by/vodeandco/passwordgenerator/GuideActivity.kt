@@ -15,10 +15,10 @@ class GuideActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guide)
-        buttonNext.setOnClickListener { _ -> if (step < 3) setStep(step + 1) else endGuide() }
-        buttonBack.setOnClickListener { _ -> setStep(step - 1) }
-        buttonSkip.setOnClickListener { _ -> endGuide() }
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        buttonNext.setOnClickListener { if (step < 3) setStep(step + 1) else endGuide() }
+        buttonBack.setOnClickListener { setStep(step - 1) }
+        buttonSkip.setOnClickListener { endGuide() }
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
         checkNeedBack()
     }
 

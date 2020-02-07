@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/container"
@@ -31,7 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/editMainPasswordLayout" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editMainPasswordLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 android:textColor="@android:color/black" />
 
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
             android:id="@+id/textSite"
@@ -66,7 +66,7 @@
             app:layout_constraintStart_toStartOf="@+id/editMainPasswordLayout"
             app:layout_constraintTop_toTopOf="@+id/editSiteLayout" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editSiteLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
                 android:inputType="textPassword"
                 android:textColor="@android:color/black" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
             android:id="@+id/textLogin"
@@ -99,7 +99,7 @@
             app:layout_constraintStart_toStartOf="@+id/editSiteLayout"
             app:layout_constraintTop_toTopOf="@+id/editLoginLayout" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editLoginLayout"
             android:layout_width="0dp"
             android:layout_height="60sp"
@@ -124,7 +124,7 @@
                 android:hint="@string/hint_optional"
                 android:textColor="@android:color/black" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
             android:id="@+id/textResult"
@@ -135,7 +135,7 @@
             app:layout_constraintStart_toStartOf="@+id/editLoginLayout"
             app:layout_constraintTop_toTopOf="@+id/editResultLayout" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editResultLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -157,7 +157,7 @@
                 android:textColor="@android:color/black" />
 
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton
             android:id="@+id/buttonGuide"
@@ -204,4 +204,4 @@
             app:layout_constraintStart_toStartOf="@+id/editResultLayout" />
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
