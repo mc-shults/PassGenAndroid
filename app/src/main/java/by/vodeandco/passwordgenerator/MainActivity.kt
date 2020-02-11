@@ -9,6 +9,7 @@ import com.google.android.material.internal.CheckableImageButton
 import com.google.android.material.textfield.TextInputLayout
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.EditText
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -61,21 +62,24 @@ class MainActivity : BaseActivity() {
         startActivity(intent)
     }
 
-    private fun initPasswordToggle(layout: TextInputLayout, key: String, getPref: () -> Boolean, setPref: (Boolean) -> Unit) {
+    private fun initPasswordToggle(layout: TextInputLayout, edit: EditText, key: String, getPref: () -> Boolean, setPref: (Boolean) -> Unit) {
         setPref(sharedPref().getBoolean(key, getPref()))
-        if (!getPref()) {
-            layout.passwordVisibilityToggleRequested(true)
+        val setTransformMethod = {
+            edit.transformationMethod = if (getPref()) null
+                else android.text.method.PasswordTransformationMethod.getInstance()
         }
+        setTransformMethod()
 
         try {
-            val field = layout::class.java.getDeclaredField("passwordToggleView")
+            val field = layout::class.java.getDeclaredField("endIconView")
             field.isAccessible = true
             val toggle = field.get(layout) as CheckableImageButton
+
             toggle.setOnClickListener {
                 val checked = !getPref()
                 setPref(checked)
                 putBoolean(key, checked)
-                layout.passwordVisibilityToggleRequested(false)
+                setTransformMethod()
             }
         }
         catch (e: NoSuchFieldException) {
@@ -85,10 +89,10 @@ class MainActivity : BaseActivity() {
     }
 
     private fun initChecks() {
-        initPasswordToggle(editMainPasswordLayout, Constants.hideMainPasswordKey, {Preferences.hideMainPassword}, {v -> Preferences.hideMainPassword = v})
-        initPasswordToggle(editSiteLayout,         Constants.hideSiteKey,         {Preferences.hideSite},         {v -> Preferences.hideSite         = v})
-        initPasswordToggle(editLoginLayout,        Constants.hideLoginKey,        {Preferences.hideLogin},        {v -> Preferences.hideLogin        = v})
-        initPasswordToggle(editResultLayout,       Constants.hideResultKey,       {Preferences.hideResult},       {v -> Preferences.hideResult       = v})
+        initPasswordToggle(editMainPasswordLayout, editMainPassword, Constants.hideMainPasswordKey, {Preferences.hideMainPassword}, {v -> Preferences.hideMainPassword = v})
+        initPasswordToggle(editSiteLayout,         editSite,         Constants.hideSiteKey,         {Preferences.hideSite},         {v -> Preferences.hideSite         = v})
+        initPasswordToggle(editLoginLayout,        editLogin,        Constants.hideLoginKey,        {Preferences.hideLogin},        {v -> Preferences.hideLogin        = v})
+        initPasswordToggle(editResultLayout,       editResult,       Constants.hideResultKey,       {Preferences.hideResult},       {v -> Preferences.hideResult       = v})
     }
 
     private fun loadMainPassword() {
