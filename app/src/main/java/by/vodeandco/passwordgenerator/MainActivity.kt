@@ -101,6 +101,7 @@ class MainActivity : BaseActivity() {
         Preferences.addUppercase      = sharedPref().getBoolean(Constants.addUppercaseKey,      Preferences.addUppercase)
         Preferences.addDigits         = sharedPref().getBoolean(Constants.addDigitsKey,         Preferences.addDigits)
         Preferences.addSpecialSymbols = sharedPref().getBoolean(Constants.addSpecialSymbolsKey, Preferences.addSpecialSymbols)
+        Preferences.saveMainPassword  = sharedPref().getBoolean(Constants.saveMainPasswordKey,  Preferences.saveMainPassword)
     }
 
     private fun dataChanged() {
