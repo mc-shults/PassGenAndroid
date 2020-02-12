@@ -3,6 +3,7 @@ package by.vodeandco.passwordgenerator
 import android.content.Intent
 import android.graphics.BlendMode
 import android.graphics.BlendModeColorFilter
+import android.graphics.ColorFilter
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -158,8 +159,8 @@ class SettingsActivity : BaseActivity()  {
                 passwordLength <= Constants.mediumPasswordLength -> Constants.mediumPasswordColor
                 else -> Constants.hardPasswordColor
             }
-        seekLength.progressDrawable.colorFilter = BlendModeColorFilter(color, BlendMode.SRC_ATOP)
-        seekLength.thumb.colorFilter = BlendModeColorFilter(color, BlendMode.SRC_ATOP)
+        //seekLength.progressDrawable.colorFilter = BlendModeColorFilter(color, BlendMode.SRC_ATOP)
+        //seekLength.thumb.colorFilter = BlendModeColorFilter(color, BlendMode.SRC_ATOP)
     }
 
     private fun getExtensionListener(extensionUrl: String) : (View) -> Unit {
