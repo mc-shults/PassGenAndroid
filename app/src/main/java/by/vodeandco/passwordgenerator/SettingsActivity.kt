@@ -66,6 +66,12 @@ class SettingsActivity : BaseActivity()  {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val edit = sharedPref().edit()
                 Preferences.algorithm = spinnerAlgorithm.selectedItem.toString()
+                val maxLength = getMaxLengthByAlgorithm(Preferences.algorithm)
+                seekLength.max = maxLength - getSymbolClassCount()
+                if (Preferences.passwordLength > maxLength) {
+                    Preferences.passwordLength = maxLength
+                    passwordLengthChanged(null, maxLength)
+                }
                 edit.putString(Constants.algorithmKey, Preferences.algorithm)
                 edit.apply()
             }
@@ -92,7 +98,7 @@ class SettingsActivity : BaseActivity()  {
     private fun symbolClassCountChanged() {
         val symbolClassCount = getSymbolClassCount()
         var passwordLength = Preferences.passwordLength
-        seekLength.max = Constants.maxPasswordLength - symbolClassCount
+        seekLength.max = getMaxLengthByAlgorithm(Preferences.algorithm) - symbolClassCount
         if (passwordLength < symbolClassCount) {
             passwordLength = symbolClassCount
         }
@@ -111,7 +117,7 @@ class SettingsActivity : BaseActivity()  {
     private fun initPasswordLengthControls() {
         Preferences.passwordLength = sharedPref().getInt(Constants.passwordLengthKey, Preferences.passwordLength)
         editLength.setText(Preferences.passwordLength.toString())
-        seekLength.max = Constants.maxPasswordLength - getSymbolClassCount()
+        seekLength.max = getMaxLengthByAlgorithm(Preferences.algorithm) - getSymbolClassCount()
         seekLength.progress = Preferences.passwordLength - getSymbolClassCount()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             updateSeekColor(Preferences.passwordLength)
@@ -134,7 +140,7 @@ class SettingsActivity : BaseActivity()  {
     }
 
     private fun passwordLengthChanged(sender: Any?, value: Int) {
-        if (!passwordLengthEditing && value <= Constants.maxPasswordLength) {
+        if (!passwordLengthEditing && value <= getMaxLengthByAlgorithm(Preferences.algorithm)) {
             passwordLengthEditing = true
             if (sender != editLength) {
                 editLength.setText(value.toString())
@@ -173,5 +179,11 @@ class SettingsActivity : BaseActivity()  {
     private fun initExtensionListeners() {
         buttonFirefox.setOnClickListener(getExtensionListener("https://addons.mozilla.org/ru/firefox/addon/constant-passgen/"))
         buttonChrome.setOnClickListener(getExtensionListener("https://chrome.google.com/webstore/detail/constant-passgen/nafjpdjfpmgcciefgoiklbdiglcfgegh"))
+    }
+
+    private fun getMaxLengthByAlgorithm(algorithm: String) : Int = when (algorithm) {
+        "SHA-1" -> 20
+        "MD5" -> 16
+        else -> 32
     }
 }
